@@ -19,20 +19,52 @@ coolButton.addEventListener('click', hooray);
 //listen on multiple items
 const buyButtons = document.querySelectorAll('button.buy');
 
-function buyItem() {
-  console.log('Buying the shit out of that item');
-  alert('Your purchased will processes as soon as possible. Thank you for your business!');
-  }
-
-function handleBuyButtonClick(buyButton) {
-  // console.log('HEY');
-  // console.log(buyButton);
-  console.log('Binding the buy button');
-  buyButton.addEventListener('click', buyItem);
+function handleBuyButtonClick(event) {
+  console.log('You clicked a button.');
+  const button = event.target;
+  console.log(button.textContent);
+  
+  console.log('You are buying it!');
+  console.log(parseFloat(event.target.dataset.price));
+  //stop event from bubbling up
+  //event.stopPropagation();
 }
 
-  //buyButtons.addEventListener('click', buyItem);
-buyButtons.forEach(handleBuyButtonClick);
+buyButtons.forEach(function(buyButton) {
+  buyButton.addEventListener('click', handleBuyButtonClick);
+
+});
+
+window.addEventListener('click', function(event) {
+  console.log('You clicked the window');
+  console.log(event.target);
+  console.log(event.type);
+  console.log(event.bubbles);
+}, { capture: true });
+
+const photoEl = document.querySelector('.photo');
+
+photoEl.addEventListener('mouseenter', function(e) {
+  console.log(e.currentTarget);
+  console.count(e.currentTarget);
+  console.log(this);
+});
+
+
+// function buyItem() {
+//   console.log('Buying the shit out of that item');
+//   alert('Your purchased will processes as soon as possible. Thank you for your business!');
+//   }
+
+// function handleBuyButtonClick(buyButton) {
+//   // console.log('HEY');
+//   // console.log(buyButton);
+//   console.log('Binding the buy button');
+//   buyButton.addEventListener('click', buyItem);
+// }
+
+//   //buyButtons.addEventListener('click', buyItem);
+// buyButtons.forEach(handleBuyButtonClick);
 
 
 
