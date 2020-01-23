@@ -20,5 +20,6 @@ function toggleRound(){
 }
 
 pic.addEventListener('click', toggleRound);
-pic.alt = 'Cute Pup';
+pic.alt = 'Cute Pup'; //setter
 pic.width = 300;
+console.log(pic.alt); //getter
